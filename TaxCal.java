@@ -17,8 +17,29 @@ public class TaxCal{
 
 	public static void homePage(){
         System.out.println("-----------------------------------------------------");
-		System.out.println("|             TAX CALCULATOR                        |");
-		System.out.println("-----------------------------------------------------");
+		System.out.println("                 __   _____   _______ ________ ");
+		System.out.println("                |  \\ /      \\|       |        \\");
+		System.out.println("                  \\$| $$$$$$| $$$$$$$$\\$$$$$$$$ " );
+		System.out.println("                | $$| $$  \\$| $$__      | $$ " );
+		System.out.println("                | $$| $$    | $$  \\     | $$" );
+		System.out.println("                | $$| $$  __| $$$$$     | $$" );
+		System.out.println("                | $$| $$/  | $$____   | $$" );
+		System.out.println("                | $$| $$   $| $$     \\  | $$");
+		System.out.println("                 \\$$ \\$$$$$$ \\$$$$$$$$   \\$$   ");
+        System.out.println("");
+        System.out.println("");
+
+        System.out.println(" ________            _    _       _____              _          _____");
+        System.out.println("|__    __|   /\\     \\ \\  / /     / ____|     /\\     | |        / ____|");
+        System.out.println("   |  |     /  \\     \\ \\/ /     | |         /  \\    | |       | |");
+        System.out.println("   |  |    / /\\ \\     > <       | |        / /\\ \\   | |       | |");
+        System.out.println("   |  |   / ____ \\   / . \\      | |____   / ___  \\  | |______ | |____");
+        System.out.println("   |__|  /_/    \\_\\ /_/ \\_\\      \\_____| /_/    \\_\\ |________| \\_____|    ");
+
+        System.out.println("========================================================================");
+        System.out.println("");
+        System.out.println("");
+
         System.out.println("[01] Withholding Tax");
 		System.out.println("[02] Payable Tax");
 		System.out.println("[03] Income Tax");
@@ -47,11 +68,11 @@ public class TaxCal{
 	public static String rentTax(int rent){
 
 		if( rent > 0 && rent <= 100000){
-			return "          You don't have to pay rent tax"; 
+			return "You don't have to pay rent tax"; 
 		}else if( rent > 0 && rent > 100000){
-			return "           You have to pay Rent Tax :" + ( (rent-100000) * 0.10);
+			return "You have to pay Rent Tax :" + ( (rent-100000) * 0.10);
 		}else{
-			return "            Invalid input...";	
+			return "Invalid input...";	
 		}
 	}
 
@@ -63,9 +84,9 @@ public class TaxCal{
 
 	public static String bankInterestTax(int bInterest){
 		if( bInterest > 0){
-			return "           You have to pay Bank Interest Tax per year :" + ( bInterest * 0.05);
+			return "You have to pay Bank Interest Tax per year :" + ( bInterest * 0.05);
 		}else{
-			return "            Invalid input...";
+			return "Invalid input...";
 		}
 	}
 
@@ -77,11 +98,11 @@ public class TaxCal{
 
 	public static String dividentTax(int dividend){
 		if( dividend > 0 && dividend <= 100000){
-			return "          You don't have to pay Dividend Tax"; 
+			return "You don't have to pay Dividend Tax"; 
 		}else if( dividend > 0 && dividend > 100000){
-			return "           You have to pay Dividend Tax : " + ( (dividend-100000) * 0.14);
+			return "You have to pay Dividend Tax : " + ( (dividend-100000) * 0.14);
 		}else{
-			return "            Invalid input...";	
+			return "Invalid input...";	
 		}
 	}
 
@@ -439,7 +460,7 @@ public class TaxCal{
 									System.out.print("Enter number of years    : ");
 									years = input.nextInt();
 									if(years>=5){
-										System.out.print("Invalid number of year...Enter the correct value againg...");	
+										System.out.println("Invalid number of year...Enter the correct value againg...");	
 										continue L10;
 									}else{
 										break;
