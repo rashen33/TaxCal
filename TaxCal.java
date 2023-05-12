@@ -121,26 +121,28 @@ public class TaxCal{
 		System.out.println("-----------------------------------------------------");
 	}
 
-	public static double incomeTax(int income){
-		double Itax = 0;
+	public static double incomeTax(double income){
+		double tax = 0;
 
-		if (income > 500000) {
-			double taxableAmount1 = income - 1200000;
-			if (taxableAmount1 <= 500000.0) {
-				Itax = taxableAmount1 * 0.06;
-			} else if (taxableAmount1 <= 1000000.0) {
-				Itax = Math.floor((500000 * 0.06) + ((taxableAmount1 - 500000) * 0.12));
-			} else if (taxableAmount1 <= 1500000.0) {
-				Itax = Math.floor((500000 * 0.06) + (500000 * 0.12) + ((taxableAmount1 - 1000000) * 0.18));
-			} else if (taxableAmount1 <= 2000000.0) {
-				Itax = Math.floor((500000 * 0.06) + (500000 * 0.12) + (500000 * 0.18) + ((taxableAmount1 - 1500000) * 0.24));
-			} else if (taxableAmount1 <= 2500000.0) {
-				Itax = Math.floor((500000 * 0.06) + (500000 * 0.12) + (500000 * 0.18) + (500000 * 0.24) + (500000 * 0.30) + ((taxableAmount1 - 2500000) * 0.36));
+		if (income > 1200000) {
+			double taxableAmount = income - 1200000;
+			if (taxableAmount <= 500000) {
+				tax = taxableAmount * 0.06;
+			} else if (taxableAmount <= 500000*2) {
+				tax = Math.floor((500000 * 0.06) + ((taxableAmount - 500000) * 0.12));
+			} else if (taxableAmount <= 500000*3) {
+				tax = Math.floor((500000 * 0.06) + (500000 * 0.12) + ((taxableAmount - 500000*2) * 0.18));
+			} else if (taxableAmount <= 500000*4) {
+				tax = Math.floor((500000 * 0.06) + (500000 * 0.12) + (500000 * 0.18) + ((taxableAmount - 500000*3) * 0.24));
+			} else if (taxableAmount <= 500000*5) {
+				tax = Math.floor((500000 * 0.06) + (500000 * 0.12) + (500000 * 0.18) + (500000 * 0.24) + ((taxableAmount - 500000*4) * 0.30));
+			} else {
+				tax = Math.floor((500000 * 0.06) + (500000 * 0.12) + (500000 * 0.18) + (500000 * 0.24) + (500000 * 0.30) + ((taxableAmount - 500000*5) * 0.36));
 			}
 		}else{
 			//Itax = 0;
 		}
-		return Itax;
+		return tax;
 	}
 
 	public static void ssclTaxPrint(){
@@ -380,7 +382,7 @@ public class TaxCal{
 				L7:do{
 					incomeTaxPrint();
 					System.out.print("Enter your total income per year    : ");
-					int income = input.nextInt();
+					double income = input.nextDouble();
 					System.out.println("You have to pay Income Tax per year " + incomeTax(income));
 						
 					System.out.print("Do you want to enter another Dividend Tax (Y/N): ");
