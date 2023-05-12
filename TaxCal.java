@@ -241,6 +241,27 @@ public class TaxCal{
 		}
 	}
 
+	public static void findLeasingAmountPrint(){
+		System.out.println("-----------------------------------------------------");
+		System.out.println("|             FIND LEASING AMOUNT                   |");
+		System.out.println("-----------------------------------------------------");
+	}
+
+	public static String findLeasingAmount(double leaseMonthly, int y, double iRate){
+		double i = iRate/1200;
+		int n=y*12;
+		double A = (leaseMonthly * (1-Math.pow((1+i), -n))) / i;
+		if(iRate > 0){
+			if(y <= 5){
+				return "Your monthly instalment                              : " + A ;
+			}else{
+				return "Invalid number of year";
+			}
+		}else{
+			return "Invalid interest rate";
+		}
+	}
+
 
 
     public static void main(String[] args){
@@ -458,24 +479,40 @@ public class TaxCal{
 								}
 							}while(true);
 
-						
-							
+						//[03]Find the Leasing Amount
+						case 3:
+						L11:do{
+							findLeasingAmountPrint();
+							System.out.print("Enter monthly lease payment amount you can afford    : ");
+							double leaseMonthly = input.nextDouble();
+							System.out.print("Enter number of years                                : ");
+							int y = input.nextInt();
+							System.out.print("Enter annual interest rate                           : ");
+							double iRate = input.nextDouble();
+							System.out.println(findLeasingAmount(leaseMonthly, y, iRate));
+
+							System.out.print("Do you want to calculate another monthly instalment (Y/N): ");
+							i = input.next();
+							if(i.equalsIgnoreCase("Y")){
+								clearConsole();
+								continue L11;
+							}else if(i.equalsIgnoreCase("N")){
+								clearConsole();
+								break;
+							}
+						}while(true);
 
 
-
-
-
+						//[04]Exit
+						case 4: break;
 						}	
-
-						
-
-
-
-
-
-			}
-		}while(true);
-		
+				
+				//(06)Exit		
+				case 6:
+				clearConsole();
+				break;			
+				}
+		}while(true);	
 	}	
 }
 
