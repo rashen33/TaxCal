@@ -193,12 +193,53 @@ public class TaxCal{
 		System.out.println("-----------------------------------------------------");
 	}
 
-	public static void searchLeasingCategoryPrint(){
-		System.out.println("-----------------------------------------------------");
-		System.out.println("|             SEARCH LEASING CATEGORY               |");
-		System.out.println("-----------------------------------------------------");
+	public static String searchLeasingCategoryThreeYears(double leaseA, double inter){
+		double i = inter/1200;
+		int year = 0;
+		int n=3*12;
+		double answer = (leaseA*i)/(1-Math.pow((1+i), -n));
+		if(leaseA >= 0){
+			if(inter >= 0){
+				return "Your monthly instalment for 3 year leasing plan  - " + answer ;
+			}else{
+				return "Invalid interest rate";
+			}
+		}else{
+			return "Invalid interest rate";
+		}
 	}
 
+	public static String searchLeasingCategoryFourYears(double leaseA, double inter){
+		double i = inter/1200;
+		int year = 0;
+		int n=4*12;
+		double answer = (leaseA*i)/(1-Math.pow((1+i), -n));
+		if(leaseA >= 0){
+			if(inter >= 0){
+				return "Your monthly instalment for 3 year leasing plan  - " + answer ;
+			}else{
+				return "Invalid interest rate";
+			}
+		}else{
+			return "Invalid interest rate";
+		}
+	}
+
+	public static String searchLeasingCategoryFiveYears(double leaseA, double inter){
+		double i = inter/1200;
+		int year = 0;
+		int n=5*12;
+		double answer = (leaseA*i)/(1-Math.pow((1+i), -n));
+		if(leaseA >= 0){
+			if(inter >= 0){
+				return "Your monthly instalment for 3 year leasing plan  - " + answer ;
+			}else{
+				return "Invalid interest rate";
+			}
+		}else{
+			return "Invalid interest rate";
+		}
+	}
 
 
 
@@ -396,12 +437,26 @@ public class TaxCal{
 						
 						//[02]Search Leasing Category	
 						case 2:
-							searchLeasingCategoryPrint();
-							System.out.print("Enter lease amount    : ");
-							double leaseA = input.nextDouble();
-							System.out.print("Enter annual interest rate    : ");
-							double inter = input.nextDouble();
-
+							L10:do{
+								searchLeasingCategoryPrint();
+								System.out.print("Enter lease amount    : ");
+								double leaseA = input.nextDouble();
+								System.out.print("Enter annual interest rate    : ");
+								double inter = input.nextDouble();
+								System.out.println(searchLeasingCategoryThreeYears(leaseA, inter));
+								System.out.println(searchLeasingCategoryFourYears(leaseA, inter));
+								System.out.println(searchLeasingCategoryFiveYears(leaseA, inter));
+	
+								System.out.print("Do you want to calculate another monthly instalment (Y/N): ");
+								i = input.next();
+								if(i.equalsIgnoreCase("Y")){
+									clearConsole();
+									continue L10;
+								}else if(i.equalsIgnoreCase("N")){
+									clearConsole();
+									break;
+								}
+							}while(true);
 
 						
 							
